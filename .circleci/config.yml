@@ -79,35 +79,30 @@ jobs:
             case "$PLATFORM" in
               sim)
                 echo "build and publish in sim mode, version: ${COMMON_VERSION}"
-                pushd deployment
-                bash script/build.sh -p sim -v ${COMMON_VERSION} -l -u
+                bash deployment/publish.sh -p sim -v ${COMMON_VERSION} -l -u
                 popd
                 ;;
               sgx)
                 echo "build and publish in sgx mode, version: ${OCCLUM_VERSION}"
-                pushd deployment
-                bash script/build.sh -p sgx -v ${OCCLUM_VERSION} -l -u
+                bash deployment/publish.sh -p sgx -v ${OCCLUM_VERSION} -l -u
                 popd
                 ;;
               tdx)
                 echo "build and publish in tdx mode, version: ${COMMON_VERSION}"
-                pushd deployment
-                bash script/build.sh -p tdx -v ${COMMON_VERSION} -l -u
+                bash deployment/publish.sh -p tdx -v ${COMMON_VERSION} -l -u
                 popd
                 ;;
               csv)
                 echo "build and publish in csv mode, version: ${COMMON_VERSION}"
-                pushd deployment
-                bash script/build.sh -p csv -v ${COMMON_VERSION} -l -u
+                bash deployment/publish.sh -p csv -v ${COMMON_VERSION} -l -u
                 popd
                 ;;
               all)
                 echo "build and publish all mode images, common version: ${COMMON_VERSION}, occlum version: ${OCCLUM_VERSION}"
-                pushd deployment
-                bash script/build.sh -p sim -v ${COMMON_VERSION} -l -u
-                bash script/build.sh -p sgx -v ${OCCLUM_VERSION} -l -u
-                bash script/build.sh -p tdx -v ${COMMON_VERSION} -l -u
-                bash script/build.sh -p csv -v ${COMMON_VERSION} -l -u
+                bash deployment/publish.sh -p sim -v ${COMMON_VERSION} -l -u
+                bash deployment/publish.sh -p sgx -v ${OCCLUM_VERSION} -l -u
+                bash deployment/publish.sh -p tdx -v ${COMMON_VERSION} -l -u
+                bash deployment/publish.sh -p csv -v ${COMMON_VERSION} -l -u
                 popd
                 ;;
               *)
